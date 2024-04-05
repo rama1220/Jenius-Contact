@@ -1,6 +1,6 @@
-import { useEffect /* useState */ } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData /*  addData, */ /* updateData, deleteData */ } from "../feature/dataSlice";
+import { fetchData } from "../feature/dataSlice";
 import BoxContact from "./BoxContact";
 
 export default function Contacts() {
@@ -8,18 +8,10 @@ export default function Contacts() {
   const data = useSelector((state) => state.data.items);
   const status = useSelector((state) => state.data.status);
   const error = useSelector((state) => state.data.error);
-  // const [newItem, setNewItem] = useState("");
 
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
-  // const handleAdd = () => {
-  //   if (newItem.trim() !== "") {
-  //     dispatch(addData({ name: newItem }));
-  //     setNewItem("");
-  //   }
-  // };
-
   if (status === "loading") {
     return <div className="condition">Loading...</div>;
   }
